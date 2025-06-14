@@ -25,7 +25,17 @@ public class QuestionController {
 
         @GetMapping("category/{category}")
         public ResponseEntity<List<Question>> getQuestionByCategory(@PathVariable String category){
-                return questionService.getQuestionsByCategory(category);
+                return questionService.getQuestionsByCategoryIgnoreCase(category);
+        }
+
+        @DeleteMapping("delete/{id}")
+        public ResponseEntity<String> deleteQuestion(@PathVariable Integer id) {
+                return questionService.deleteQuestion(id);
+        }
+
+        @PutMapping("update/{id}")
+        public ResponseEntity<String> updateQuestion(@PathVariable Integer id, @RequestBody Question updatedQuestion) {
+                return questionService.updateQuestion(id, updatedQuestion);
         }
 
         //deletemapping with delete nad updatemapping with put

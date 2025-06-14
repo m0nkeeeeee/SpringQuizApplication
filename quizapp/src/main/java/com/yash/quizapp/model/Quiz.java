@@ -16,7 +16,7 @@ public class Quiz {
     private Integer id;
     private String title;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Question> questions;
 
 }
